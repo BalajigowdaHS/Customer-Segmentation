@@ -9,7 +9,9 @@ The goal of this project is to segment customers based on their demographic and 
 The dataset contains 29 features, some of which are:
 
 **Demographic Information:** Year_Birth, Education, Marital_Status, Income.
+
 **Behavioral Information:** Features like Kidhome, Teenhome, and customer interactions with marketing campaigns (e.g., AcceptedCmp1, AcceptedCmp2, etc.).
+
 **Customer Registration Date:** Dt_Customer, which captures when the customer joined the company.
 This dataset provides a rich set of features to analyze customer behaviors and group them into meaningful clusters.
 
@@ -18,8 +20,11 @@ This dataset provides a rich set of features to analyze customer behaviors and g
 The first step in the project involved cleaning the dataset to prepare it for analysis:
 
 **Handling Missing Data:** Any missing values in the dataset were imputed or removed to ensure the integrity of the analysis.
+
 **Encoding Categorical Variables:** Features like Education, Marital_Status, and other categorical variables were converted to numerical values using Label Encoding to allow them to be used in clustering algorithms.
+
 **Feature Scaling:** Numerical features like Income, Age, and others were scaled using StandardScaler to ensure that all features contributed equally to the clustering process. This scaling was necessary because clustering algorithms like KMeans are sensitive to differences in feature magnitudes.
+
 **Feature Engineering:** New features such as Age (calculated from Year_Birth) and Income per person (calculated from Income / (Kidhome + Teenhome)) were derived to provide more meaningful insights.
 
 ### Dimensionality Reduction
@@ -42,7 +47,7 @@ The second principal component (PC2) explained 30% of the variance.
 Together, the first two components explained 75% of the total variance in the data.
 This reduction allowed us to visualize customer segments in a 2D space, making it easier to interpret and analyze the clustering results.
 
-Image Placeholder: PCA 2D or 3D Scatter Plot
+![alt text](image.png)
 
 ### Clustering
 
@@ -56,19 +61,15 @@ Selecting the optimal number of clusters (k): The Elbow Method was used to find 
 
 The optimal number of clusters was determined to be 4 based on the Elbow Method.
 
-Image Placeholder: Elbow Method Plot
+![alt text](image-1.png)
 
 Clustering: After determining k = 4, KMeans was applied, and the customers were divided into four clusters based on their features.
 
-Image Placeholder: KMeans Cluster Visualization
+![alt text](image-2.png)
 
-**Agglomerative Clustering**
+![alt text](image-4.png)
 
-Agglomerative Clustering, a hierarchical clustering method, was also applied as an alternative to KMeans. Unlike KMeans, Agglomerative Clustering does not require specifying the number of clusters in advance. It builds a tree of clusters (a dendrogram), which can be cut at a specific level to form the desired number of clusters.
-
-Agglomerative Clustering produced a dendrogram, which was analyzed to select the optimal number of clusters.
-
-Image Placeholder: Dendrogram from Agglomerative Clustering
+![alt text](image-5.png)
 
 Quantification of Clustering Performance
 To evaluate the effectiveness of the clustering algorithms, Silhouette Scores were computed. The Silhouette Score measures how well-separated the clusters are. A score closer to +1 indicates that the clusters are well-separated, while a score closer to -1 suggests that the points are poorly clustered.
@@ -77,18 +78,21 @@ KMeans: The Silhouette Score for KMeans clustering was 0.67, indicating a good c
 
 Agglomerative Clustering: The Silhouette Score for Agglomerative Clustering was 0.62, which is slightly lower than KMeans but still indicates reasonable cluster separation.
 
-Image Placeholder: Silhouette Score Comparison Plot
 
 Results and Insights
 The customer segmentation resulted in four distinct clusters, each representing a unique group of customers based on their characteristics:
 
-Cluster 1: High-income customers, typically older, and more likely to engage in marketing campaigns.
-Cluster 2: Younger customers with moderate income, showing low engagement with marketing campaigns.
-Cluster 3: Low-income customers, less likely to respond to marketing campaigns.
-Cluster 4: Middle-aged customers with varying income levels but generally low engagement.
+**Cluster 1:** High-income customers, typically older, and more likely to engage in marketing campaigns.
+
+**Cluster 2:** Younger customers with moderate income, showing low engagement with marketing campaigns.
+
+**Cluster 3:** Low-income customers, less likely to respond to marketing campaigns.
+
+**Cluster 4:** Middle-aged customers with varying income levels but generally low engagement.
+
 These clusters offer valuable insights into customer behavior, which can be used to develop personalized marketing strategies.
 
-Image Placeholder: Final Cluster Visualization
+
 
 ### Future Improvements
 While this project provides valuable insights, there are several improvements that could be made:
